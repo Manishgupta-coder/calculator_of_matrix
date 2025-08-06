@@ -1,0 +1,334 @@
+/* New, sophisticated color palette - All Green */
+:root {
+    --primary-color: #66BB6A; /* Light Green for headings */
+    --secondary-color: #32CD32; /* Lime Green accent */
+    --background-light: #f0fff0; /* Honeydew */
+    --card-bg-light: #ffffff;
+    --text-color-light: #000000; /* Black text */
+    --border-color-light: #90EE90; /* Light green border */
+    --hover-bg-light: #e0f0e0;
+    --success-bg-light: #98FB98; /* Pale Green */
+    --success-text-light: #004d00;
+    --error-color: #b22222; /* Retaining a red for errors for contrast */
+}
+
+/* Dark Mode Palette - All Green */
+body.dark-mode {
+    --primary-color: #98FB98;
+    --secondary-color: #3CB371; /* Medium Sea Green */
+    --background-light: #000000;
+    --card-bg-light: #000000;
+    --text-color-light: #F0FFF0;
+    --border-color-light: #3CB371;
+    --hover-bg-light: #000000;
+    --success-bg-light: #3CB371;
+    --success-text-light: #F0FFF0;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-color-light);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: -0.5px;
+}
+    
+strong {
+    color: var(--text-color-light); /* Ensure bold text is black */
+}
+
+/* Layout & Structure */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    position: relative;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 0;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+    
+.dark-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+    
+/* Elegant Card & Panel Styling */
+.page-content, .control-panel, .operation-explanation {
+    background: var(--card-bg-light);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-top: 25px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color-light);
+}
+
+body.dark-mode .page-content,
+body.dark-mode .control-panel,
+body.dark-mode .operation-explanation {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    background: var(--card-bg-light);
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+    
+nav a {
+    padding: 12px 25px;
+    text-decoration: none;
+    color: var(--text-color-light);
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    margin: 0 5px;
+}
+
+nav a:hover {
+    background-color: var(--hover-bg-light);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+nav a.active {
+    background-color: var(--primary-color);
+    color: var(--card-bg-light);
+    box-shadow: 0 4px 10px rgba(0, 100, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Page Transitions */
+.page {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Calculator Controls */
+.control-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.control-panel input,
+.control-panel select {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color-light);
+    width: 150px;
+    text-align: center;
+    background: var(--background-light);
+    color: var(--text-color-light);
+    transition: all 0.3s ease;
+}
+
+.control-panel input:focus,
+.control-panel select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 100, 0, 0.2);
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.button-group button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: var(--card-bg-light);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 100, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.button-group button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 100, 0, 0.4);
+}
+
+.button-group button:disabled {
+    background-color: var(--border-color-light);
+    color: #999;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Matrix Display */
+.matrix-section {
+    text-align: center;
+    margin-top: 30px;
+}
+    
+.matrix-section h3, .result-panel h2 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.matrix-section table,
+.result-panel table {
+    margin: 0 auto 20px;
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+
+.matrix-section input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color-light);
+    text-align: center;
+    background: var(--background-light);
+    color: var(--text-color-light);
+}
+
+.result-panel {
+    margin-top: 30px;
+    text-align: center;
+}
+    
+.result-panel td {
+    border: 1px solid var(--border-color-light);
+    padding: 12px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 80px;
+    background-color: var(--success-bg-light);
+    color: var(--success-text-light);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+    
+body.dark-mode .result-panel td {
+    border-color: #3CB371;
+}
+
+.error {
+    color: var(--error-color);
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+    
+.operation-explanation {
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 12px;
+    background-color: var(--hover-bg-light);
+    border: 1px solid var(--border-color-light);
+}
+    
+.operation-explanation h4 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+    
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+      
+    header {
+        padding-top: 10px;
+    }
+      
+    .dark-toggle {
+        top: 10px;
+        right: 10px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    nav a {
+        margin: 5px 0;
+        text-align: center;
+    }
+      
+    .control-panel {
+        flex-direction: column;
+    }
+
+    .control-panel input,
+    .control-panel select {
+        width: 100%;
+    }
+
+    .button-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .button-group button {
+        width: 100%;
+    }
+
+    .matrix-section table,
+    .result-panel table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .matrix-section td input[type="number"] {
+        width: 50px;
+    }
+
+    .operation-explanation {
+        font-size: 0.95rem;
+        padding: 15px;
+    }
+}
